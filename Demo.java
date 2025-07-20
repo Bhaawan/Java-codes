@@ -1,44 +1,39 @@
 
+enum Laptop{
+    Macbook(2000), 
+    XPS(2500), 
+    ThinkPad(1500),
+    IdeaPad();
 
-enum Status{
-    Running, 
-    Failed, 
-    Pending, 
-    Success;
+    private int price;
+
+    private Laptop(){
+        price=250;
+    }
+
+    private Laptop(int price){
+        this.price=price;
+    }
+
+    public int getPrice(){
+        return price;
+    }
+
+    public void setPrice(int price){
+        this.price=price;
+    }
 }
 
 public class Demo{
     public static void main(String args[]){
-       Status s=Status.Running;
        
-       /* if(s==Status.Pending){
-        System.out.println("Currently pending task");
-       }
-       else if(s==Status.Running){
-        System.out.println("Now running task");
-       }
-       else if(s==Status.Success){
-        System.out.println("Task success !!!");
-       }
-       else{
-        System.out.println("Task Failed");
-       } */
+        Laptop lap=Laptop.Macbook;
+       
+        System.out.println(lap.getClass().getSuperclass());
+        System.out.println(lap+" "+lap.getPrice());
 
-       switch (s) {
-           case Pending:
-                System.out.println("Currently pending task");
-                break;
-            case Running:
-                System.out.println("Now running task");
-                break;
-            case Success:
-                System.out.println("Task success !!!");
-                break;
-            case Failed:
-                System.out.println("Task Failed");
-                break;
-           default:
-                System.out.println("WRONG STATUS");
-       }
+        for(Laptop lp:Laptop.values()){
+            System.out.println(lp+" "+lp.getPrice());
+        }
     }
 }

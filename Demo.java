@@ -1,41 +1,23 @@
-interface A{
-    void show();
-    void config();
+
+
+enum Status{
+    Running, 
+    Failed, 
+    Pending, 
+    Success;
 }
-
-interface X{
-    void hello();
-    void abcd();
-}
-
-class B implements A,X{
-    public void show(){
-        System.out.println("in show()");
-    }
-
-    public void config(){
-        System.out.println("in config()");
-    }
-
-    public void hello(){
-        System.out.println("in hello()");
-    }
-
-    public void abcd(){
-        System.out.println("in abcd()");
-    }
-}
-
 
 public class Demo{
     public static void main(String args[]){
-        A obj=new B();
-        obj.show();
-        obj.config();
-        
-        X obj1=new B();
-        obj1.hello();
+       Status s=Status.Running;
+       System.out.println(s);   
 
-        obj1.abcd();
+       Status s1=Status.Pending;
+       System.out.println(s1.ordinal());
+
+       Status arr[]=Status.values();
+       for(Status st:arr){
+            System.out.println(st+" "+st.ordinal());
+       } 
     }
 }

@@ -1,36 +1,41 @@
-
-
-interface Computer{
+interface A{
     void show();
+    void config();
 }
 
-class Laptop implements Computer{
+interface X{
+    void hello();
+    void abcd();
+}
+
+class B implements A,X{
     public void show(){
-        System.out.println("using laptop");
+        System.out.println("in show()");
+    }
+
+    public void config(){
+        System.out.println("in config()");
+    }
+
+    public void hello(){
+        System.out.println("in hello()");
+    }
+
+    public void abcd(){
+        System.out.println("in abcd()");
     }
 }
 
-class Desktop implements Computer{
-    public void show(){
-        System.out.println("using desktop");
-    }
-}
-
-class Programmer{
-    void code(Computer lp){
-        lp.show();
-    }
-}
 
 public class Demo{
     public static void main(String args[]){
+        A obj=new B();
+        obj.show();
+        obj.config();
         
-        Computer lp=new Laptop();
-        Computer desk=new Desktop();
+        X obj1=new B();
+        obj1.hello();
 
-        Programmer p=new Programmer();
-
-        p.code(desk);
-
+        obj1.abcd();
     }
 }

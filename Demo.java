@@ -1,39 +1,30 @@
 
-enum Laptop{
-    Macbook(2000), 
-    XPS(2500), 
-    ThinkPad(1500),
-    IdeaPad();
-
-    private int price;
-
-    private Laptop(){
-        price=250;
-    }
-
-    private Laptop(int price){
-        this.price=price;
-    }
-
-    public int getPrice(){
-        return price;
-    }
-
-    public void setPrice(int price){
-        this.price=price;
-    }
+interface A{
+    void show();
 }
+
+/* class B implements A{   // standard way to define a interface functions
+    public void show(){
+        System.out.println("in B Show()");
+    }
+} */
 
 public class Demo{
     public static void main(String args[]){
-       
-        Laptop lap=Laptop.Macbook;
-       
-        System.out.println(lap.getClass().getSuperclass());
-        System.out.println(lap+" "+lap.getPrice());
+       A obj=new A(){   // another way using anonymus inner class
+            public void show(){
+                System.out.println("in A Show()");
+            }
+       };
 
-        for(Laptop lp:Laptop.values()){
-            System.out.println(lp+" "+lp.getPrice());
-        }
+       // using lambda expression
+       A obj1= ()->{System.out.println("in obj1 A show()");}; 
+
+       A obj2= ()->System.out.println("in obj2 A show()");
+
+
+       obj.show();
+       obj1.show();
+       obj2.show();
     }
 }

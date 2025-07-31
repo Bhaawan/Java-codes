@@ -1,33 +1,33 @@
-
-class BhaawanException extends Exception{
-
-    public BhaawanException(String str){
-        super(str);
-    }
-}
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class Demo{
-    public static void main(String args[]){
+    public static void main(String[] args) throws IOException{
+        // 1st way of taking a input in java OLD WAY
+        
+            System.out.print("hello world enter a number = ");
 
-        int a=10, res=-1, b=20;
+            InputStreamReader in=new InputStreamReader(System.in);
+            BufferedReader bf=new BufferedReader(in);
 
-        try {
-            res=a/b;
-            if(res==0){
-                throw new BhaawanException( "I dont want result to be 0 :) setting res=a");
-            }
-        }
-        catch (ArithmeticException e) {
-            System.out.println("Cannot divide by 0");
-        }
-        catch (BhaawanException bh) {
-            res=a;
-            System.out.println("Bhaawan Exception recieved "+bh);
-        }
-        catch(Exception e){
-            System.out.println("SOME WEIRD ANOMLY "+e);
-        }
+            int num=-999;
+            num=Integer.parseInt(bf.readLine());
+            
+            System.out.println("entered number = "+num);
 
-        System.out.println("division successful res = "+res);
+            bf.close();
+
+        // 2nd way of taking input NEWER WAY
+
+            System.out.print("enter a number = ");
+
+            Scanner sc=new Scanner(System.in);
+            int num1=sc.nextInt();
+
+            System.out.println("new entered number = "+num1);
+
     }
 }

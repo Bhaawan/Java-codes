@@ -1,33 +1,27 @@
 
-class BhaawanException extends Exception{
 
-    public BhaawanException(String str){
-        super(str);
-    }
-}
 
 public class Demo{
     public static void main(String args[]){
-
-        int a=10, res=-1, b=20;
-
         try {
-            res=a/b;
-            if(res==0){
-                throw new BhaawanException( "I dont want result to be 0 :) setting res=a");
-            }
+            a();
+            b();
+        } catch (ArithmeticException e) {
+            System.out.println("deno cant be zero "+e);
         }
-        catch (ArithmeticException e) {
-            System.out.println("Cannot divide by 0");
-        }
-        catch (BhaawanException bh) {
-            res=a;
-            System.out.println("Bhaawan Exception recieved "+bh);
-        }
-        catch(Exception e){
-            System.out.println("SOME WEIRD ANOMLY "+e);
-        }
+    }
 
-        System.out.println("division successful res = "+res);
+    public static void a() throws ArithmeticException{
+        int i=(int)(Math.random()*10);
+        int x=10/i;
+
+        System.out.println("value of x = "+x);
+    }
+
+    public static void b() throws ArithmeticException{
+        int i=0;
+        int y=10/i;
+
+        System.out.println("value of y = "+y);
     }
 }

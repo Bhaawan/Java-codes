@@ -1,10 +1,10 @@
 
 import java.io.IOException;
 
-
-class A extends Thread{
+/* 
+class A implements Runnable{
     public void run(){
-        for(int i=0; i<100; i++){
+        for(int i=0; i<10; i++){
             System.out.println("hi");
             try {
                 Thread.sleep(10);
@@ -15,9 +15,9 @@ class A extends Thread{
     }
 }
 
-class B extends Thread{
+class B implements Runnable{
     public void run(){
-        for(int i=0; i<100; i++){
+        for(int i=0; i<10; i++){
             System.out.println("hello");
             try {
                 Thread.sleep(10);
@@ -26,24 +26,38 @@ class B extends Thread{
             }
         }
     }
-}
+} */
 
 public class Demo{
     public static void main(String args[]) throws IOException{
-        A obj1=new A();
-        B obj2=new B();
+
+        Runnable obj1=()->{
+            for(int i=0; i<5; i++){
+                System.out.println("hi");
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        Runnable obj2=()->{
+            for(int i=0; i<5; i++){
+                System.out.println("hello");
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
         
-        // obj1.setPriority(8);
-        // System.out.println(obj1.getPriority());
+        Thread t1=new Thread(obj1);
+        Thread t2=new Thread(obj2);
 
-        obj1.start();
-
-        try {
-            Thread.sleep(10);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        obj2.start();
+        t1.start();
+        t2.start();
+        
     }
 }

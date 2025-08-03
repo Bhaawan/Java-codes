@@ -1,55 +1,28 @@
 
 import java.io.IOException;
 
-/* 
-class A implements Runnable{
-    public void run(){
-        for(int i=0; i<10; i++){
-            System.out.println("hi");
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+class Counter{
+    int count;
+
+    public synchronized void incrementCount(){
+        count++;
     }
 }
-
-class B implements Runnable{
-    public void run(){
-        for(int i=0; i<10; i++){
-            System.out.println("hello");
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-} */
 
 public class Demo{
     public static void main(String args[]) throws IOException{
 
+        Counter c=new Counter();
+
         Runnable obj1=()->{
-            for(int i=0; i<5; i++){
-                System.out.println("hi");
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            for(int i=0; i<1000; i++){
+                c.incrementCount();
             }
         };
 
         Runnable obj2=()->{
-            for(int i=0; i<5; i++){
-                System.out.println("hello");
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            for(int i=0; i<1000; i++){
+                c.incrementCount();
             }
         };
         
@@ -58,6 +31,15 @@ public class Demo{
 
         t1.start();
         t2.start();
+
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         
+        
+        System.out.println(c.count);
     }
 }

@@ -1,41 +1,45 @@
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 
-public class Demo{
-    public static void main(String args[]){
-        
-        List<Integer> list=new ArrayList<Integer>();
+public class Demo {
+    public static void main(String args[]) {
 
-        list.add(5);
-        list.add(10);
-        list.add(25);
-        list.add(14);
-        list.add(3);
+        // HASHSET- unsorted unique
+        Set<Integer> set = new HashSet<Integer>();
 
-        for(int i:list){
+        set.add(5);
+        set.add(10);
+        set.add(25);
+        set.add(10);
+        set.add(3);
+        set.add(25);
+
+        for (int i : set) {
             System.out.println(i);
         }
 
-        System.out.println("\n"+list.get(2)); // use List to get methods like get() to fetch ny index value
+        // TREESET- sorted unique
+        System.out.println("\n");
+        Set<Integer> set1 = new TreeSet<Integer>();
 
-        System.out.println("\nIndex of "+list.get(3)+" is "+list.indexOf(14));
+        set1.add(5);
+        set1.add(10);
+        set1.add(25);
+        set1.add(10);
+        set1.add(3);
+        set1.add(25);
 
-        /*System.out.println("\n");
+        for (int i : set1) {
+            System.out.println(i);
+        }
 
-        Collection list1=new ArrayList();
+        // ITERABLE
+        System.out.println("\n");
+        Iterator<Integer> values=set1.iterator();
+        while(values.hasNext()){
+            System.out.println(values.next());
+        }
 
-        list1.add(5);
-        list1.add(10);
-        list1.add(25);
-        list1.add("bhaawan");   // will not give compile time error but will give exception at run-time
-
-        for(Object i:list1){
-            int num=(Integer)i;
-            System.out.println(num*2);
-        }*/
     }
 }

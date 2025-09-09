@@ -1,30 +1,66 @@
 
 import java.util.*;
 
+class Students implements Comparable<Students>{
+    String name;
+    int age;
+
+    Students(String name, int age){
+        this.name=name;
+        this.age=age;
+    }
+
+    @Override
+    public String toString(){
+        return "Student [age = "+age+", name = "+name+"]";
+    }
+
+    public int compareTo(Students that){
+        if(this.age>that.age){
+            return 1;
+        }
+        
+        return -1;
+    }
+}
 
 public class Demo {
     public static void main(String args[]) {
 
-        Map<String, Integer> marks=new HashMap<>();
-        
-        marks.put("bhaawan", 97);
-        marks.put("sachin", 98);
-        marks.put("rahul", 99);
-        marks.put("sachin", 100); // it will update the value of key "sachin"
+        Comparator<String> comp=(String s1, String s2)->{
+                return (s1.length() - s2.length())*-1;
+            };
 
-        for(String key: marks.keySet()){
-            System.out.println(key+" -> "+marks.get(key));
+        List<String> list = new ArrayList<>();
+        list.add("bhaawan");
+        list.add("kumar");
+        list.add("sin");
+        list.add("gautam");
+        
+        System.out.println(list);
+
+        Collections.sort(list, comp);
+
+        System.out.println(list);
+    
+        List<Students> students = new ArrayList<>();
+        students.add(new Students("bhaawan", 20));
+        students.add(new Students("kumar", 22));
+        students.add(new Students("sin", 21));
+        students.add(new Students("gautam", 19));
+        
+        for(Students s:students){
+            System.out.println(s);
         }
+        System.out.println();
         
-        System.out.println(marks.get("abcd"));
-
-        System.out.println(marks.keySet());
-
-        marks.remove("sachin");
-
-        System.out.println(marks);
-
-
-
+        Collections.sort(students);
+        
+        for(Students s:students){
+            System.out.println(s);
+        }
+    
+    
     }
+
 }

@@ -5,41 +5,26 @@ import java.util.*;
 public class Demo {
     public static void main(String args[]) {
 
-        // HASHSET- unsorted unique
-        Set<Integer> set = new HashSet<Integer>();
+        Map<String, Integer> marks=new HashMap<>();
+        
+        marks.put("bhaawan", 97);
+        marks.put("sachin", 98);
+        marks.put("rahul", 99);
+        marks.put("sachin", 100); // it will update the value of key "sachin"
 
-        set.add(5);
-        set.add(10);
-        set.add(25);
-        set.add(10);
-        set.add(3);
-        set.add(25);
-
-        for (int i : set) {
-            System.out.println(i);
+        for(String key: marks.keySet()){
+            System.out.println(key+" -> "+marks.get(key));
         }
+        
+        System.out.println(marks.get("abcd"));
 
-        // TREESET- sorted unique
-        System.out.println("\n");
-        Set<Integer> set1 = new TreeSet<Integer>();
+        System.out.println(marks.keySet());
 
-        set1.add(5);
-        set1.add(10);
-        set1.add(25);
-        set1.add(10);
-        set1.add(3);
-        set1.add(25);
+        marks.remove("sachin");
 
-        for (int i : set1) {
-            System.out.println(i);
-        }
+        System.out.println(marks);
 
-        // ITERABLE
-        System.out.println("\n");
-        Iterator<Integer> values=set1.iterator();
-        while(values.hasNext()){
-            System.out.println(values.next());
-        }
+
 
     }
 }
